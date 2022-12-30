@@ -5,7 +5,6 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 
-
 class OrangeHRM_Add_employee():
 
     def test(self):
@@ -18,9 +17,9 @@ class OrangeHRM_Add_employee():
 
         # maximize the window
         driver.maximize_window()
-        time.sleep(4)
+        time.sleep(2)
 
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(2)
 
         # TC_login_01 A) Successful_Employee_login:
 
@@ -37,17 +36,20 @@ class OrangeHRM_Add_employee():
         xpath_of_password = "//input[@name='password']"
 
         xpath_of_login = "//button[@type='submit']"
-        # username:
-        username = driver.find_element(By.XPATH, xpath_of_username)
-        username.send_keys("Admin")
-        # password:
-        password = driver.find_element(By.XPATH, xpath_of_password)
-        password.send_keys("admin123")
-        # login:
-        login = driver.find_element(By.XPATH, xpath_of_login)
-        login.click()
 
-        time.sleep(3)
+        xpath_of_username = "//input[@name='username']"
+
+        xpath_of_password = "//input[@name='password']"
+
+        xpath_of_login = "//button[@type='submit']"
+
+        driver.find_element(By.XPATH, xpath_of_username).send_keys("Admin")
+
+        driver.find_element(By.XPATH, xpath_of_password).send_keys("admin123")
+
+        driver.find_element(By.XPATH, xpath_of_login).click()
+
+        time.sleep(5)
 
         # TC_PIM_01 A) Add_new_employee:
         """
@@ -88,31 +90,33 @@ class OrangeHRM_Add_employee():
         time.sleep(3)
 
         Employee_id = driver.find_element(By.XPATH, Xpath_of_Employee_id)
-        Employee_id.clear()
+        Employee_id.send_keys(Keys.CONTROL + "a")
+        time.sleep(3)
+        Employee_id.send_keys(Keys.BACK_SPACE)
         time.sleep(3)
 
         Employee_id = driver.find_element(By.XPATH, Xpath_of_Employee_id)
         Employee_id.send_keys("5109")
         time.sleep(3)
 
-        Xpath_of_save = "// button[@type='submit']"
-        Save = driver.find_element(By.XPATH,Xpath_of_save)
+        Xpath_of_Save = "// button[@type='submit']"
+        Save = driver.find_element(By.XPATH, Xpath_of_Save)
         Save.click()
-        time.sleep(2)
+        time.sleep(5)
 
         Xpath_of_personal_details = "//a[@class='orangehrm-tabs-item --active']"
-        personal_details = driver.find_element(By.XPATH,Xpath_of_personal_details)
+        personal_details = driver.find_element(By.XPATH, Xpath_of_personal_details)
         personal_details.click()
         time.sleep(2)
 
         Xpath_of_nickname = "//label[text()='Nickname']/following::div[1]/input"
-        nickname = driver.find_element(By.XPATH,Xpath_of_nickname)
-        nickname.clear()
+        nickname = driver.find_element(By.XPATH, Xpath_of_nickname)
+        nickname.click()
         nickname.send_Keys("Prathi")
         time.sleep(3)
 
         Xpath_of_other_id = "//label[text()='Other Id']/following::div[1]/input"
-        other_id = driver.find_element(By.XPATH,Xpath_of_other_id)
+        other_id = driver.find_element(By.XPATH, Xpath_of_other_id)
         other_id.send_keys("002")
         time.sleep(3)
 
@@ -127,22 +131,22 @@ class OrangeHRM_Add_employee():
         time.sleep(3)
 
         Xpath_of_SSN = "//input[@class='oxd-input oxd-input--active']/following::input[9]"
-        SSN = driver.find_element(By.XPATH,Xpath_of_SSN)
+        SSN = driver.find_element(By.XPATH, Xpath_of_SSN)
         SSN.send_keys("12345")
         time.sleep(3)
 
         Xpath_of_SIN = "//input[@class='oxd-input oxd-input--active']/following::input[10]"
-        SIN = driver.find_element(By.XPATH,Xpath_of_SIN)
+        SIN = driver.find_element(By.XPATH, Xpath_of_SIN)
         SIN.send_keys("678901")
         time.sleep(5)
 
         Xpath_of_nationality = "//*[text()='Nationality']/following::div[1]"
-        nationality = driver.find_element(By.XPATH,Xpath_of_nationality)
+        nationality = driver.find_element(By.XPATH, Xpath_of_nationality)
         action = ActionChains(driver)
         action_1 = ActionChains(driver).move_to_element(nationality).click()
         action_1.perform()
         Xpath_of_select_role = "//div[@role='option']/span[text()='Indian']"
-        select_role = driver.find_element(By.XPATH,Xpath_of_select_role)
+        select_role = driver.find_element(By.XPATH, Xpath_of_select_role)
         action_2 = ActionChains(driver).move_to_element(select_role).click()
         action_2.perform()
         time.sleep(3)
@@ -150,17 +154,17 @@ class OrangeHRM_Add_employee():
         Xpath_of_marital_status = "//label[text()='Marital Status']"
         marital_status = driver.find_element(By.XPATH, Xpath_of_marital_status)
         action_3 = ActionChains(driver)
-        action_4 = ActionChains(driver).move_to_element(marital_status).click()
+        action_3 = ActionChains(driver).move_to_element(marital_status).click()
         action_3.perform()
         Xpath_of_selection_role_1 = "//label[text()='Marital Status']/following::div[1]"
-        selection_role_1 = driver.find_element(By.XPATH,Xpath_of_selection_role_1)
+        selection_role_1 = driver.find_element(By.XPATH, Xpath_of_selection_role_1)
+        action_4 = ActionChains(driver)
         action_4 = ActionChains(driver).move_to_element(selection_role_1).click()
         action_4.perform()
         time.sleep(3)
 
-
         Xpath_of_save_1 = '//p[text()=" * Required"]/following::button[@type="submit"]'
-        save_1 = driver.find_element(By.XPATH,Xpath_of_save_1)
+        save_1 = driver.find_element(By.XPATH, Xpath_of_save_1)
         save_1.click()
         time.sleep(5)
 
